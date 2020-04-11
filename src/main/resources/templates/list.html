@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>人员信息表</title>
+</head>
+<body>
+<a th:href="@{/add}">添加记录</a>
+<a th:href="@{/excel}">导出Excel</a>
+<a th:href="@{/toHtml}">导入Excel</a>
+<table border="1px">
+    <tr>
+        <td colspan="6" align="center">人员信息表</td>
+    </tr>
+    <tr>
+        <td>ID</td>
+        <td>姓名</td>
+        <td>性别</td>
+        <td>年龄</td>
+        <td>修改</td>
+        <td>删除</td>
+    </tr>
+    <tr th:each="person:${person}">
+        <td th:text="${person.id}">ID</td>
+        <td th:text="${person.name}">姓名</td>
+        <td th:text="${person.gender}">性别</td>
+        <td th:text="${person.age}">年龄</td>
+        <td><a th:href="@{/update/}+${person.id}">修改</a></td>
+        <td><a th:href="@{/delete/}+${person.id}" onclick="return confirm('确定要删除该记录吗？')">删除</a></td>
+    </tr>
+</table>
+</body>
+</html>
